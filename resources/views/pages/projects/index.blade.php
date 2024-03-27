@@ -5,6 +5,8 @@
 
     <h1>lista dei projects</h1>
 
+<a class="btn btn-primary " href="{{ route('dashboardprojects.create') }}">create</a>
+
     <div
         class="table-responsive"
     >
