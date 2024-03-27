@@ -22,7 +22,8 @@
                     <th scope="col">SLUG</th>
                 </tr>
             </thead>
-            <tbody>@foreach ($projects as $item)
+            <tbody>
+                @foreach ($projects as $item)
                 
                 <tr class="">
                     <td>{{ $item->id }}</td>
@@ -30,6 +31,25 @@
                     <td>{{ $item->img }}</td>
                     <td>{{ $item->description }}</td>
                     <td>{{ $item->software }}</td>
+                    <td>
+                    
+                        <a class="btn btn-primary " href="{{ route('dashboardprojects.edit', $item->id) }}">Modifica</a>
+                        
+                        <form method="POST" action="{{ route('dashboardprojects.destroy', $item->id)}}">
+                        
+                            @csrf
+                            @method('DELETE')
+
+                            <button class="btn btn-danger ">
+                             Elimina
+                            </button>
+
+                        
+                        </form>
+                    
+                    </td>
+
+
                 </tr>
             @endforeach
                
