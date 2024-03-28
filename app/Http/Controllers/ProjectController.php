@@ -41,6 +41,11 @@ class ProjectController extends Controller
         $val_data['slug'] = $slug;
 
         // dd($val_data);
+
+        //funzione per creare il nuovo projetto e va a sostituire il newpost etc 
+        $new_project = Project::create($val_data);
+
+        return redirect()->route('dashboardprojects.index');
     }
 
     /**
