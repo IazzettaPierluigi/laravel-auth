@@ -33,7 +33,7 @@
                     <td>{{ $item->software }}</td>
                     <td>
                     
-                        <a class="btn btn-primary " href="{{ route('dashboardprojects.edit', $item->id) }}">Modifica</a>
+                        <a class="btn btn-primary " href="{{ route('dashboardprojects.edit', $item->slug) }}">Modifica</a>
                         
                         <form method="POST" action="{{ route('dashboardprojects.destroy', $item->slug)}}">
                         
