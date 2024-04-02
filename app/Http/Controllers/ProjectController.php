@@ -98,6 +98,10 @@ class ProjectController extends Controller
      */
     public function destroy(Project $project)
     {
+        if ($project->img) {
+            Storage::delete($project->img);
+        }
+
         $project->delete();
 
         return redirect()->route('dashboardprojects.index');
