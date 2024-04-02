@@ -27,7 +27,16 @@
                 
                 <tr class="">
                     <td>{{ $item->id }}</td>
-                    <td>{{ $item->title }}</td>
+                    
+                    {{-- link per utilizzare la show --}}
+                   
+                    <td>
+
+                        <a href="{{ route('dashboardprojects.show', $item->slug)}}"> {{ $item->title }} </a>
+
+                    </td>
+
+
                     <td>{{ $item->img }}</td>
                     <td>{{ $item->description }}</td>
                     <td>{{ $item->software }}</td>
