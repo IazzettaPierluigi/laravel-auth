@@ -3,7 +3,10 @@
 @section('content')
     <main class="container">
 <h1>crea un nuovo progetto</h1>
-        <form action="{{ route('dashboardprojects.store') }}" method="POST">
+        <form 
+        action="{{ route('dashboardprojects.store') }}" 
+        enctype="multipart/form-data"
+        method="POST">
             @csrf
             
             <div class="mb-3">
@@ -17,8 +20,14 @@
             </div>
 
             <div class="mb-3">
-                <label for="img" class="form-label">Image</label>
-                <input type="text" class="form-control" name="img" id="img">
+                <input type="file"
+                name="img"
+                id="img"
+                class="form-control"
+                @error('img')
+                    is-invalid
+                @enderror
+                >
             </div>
 
             <div class="mb-3">
