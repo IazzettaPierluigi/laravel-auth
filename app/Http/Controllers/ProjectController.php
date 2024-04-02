@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Project;
 use App\Http\Requests\StoreProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
+use Illuminate\Support\Facades\Storage;
 
 class ProjectController extends Controller
 {
@@ -41,6 +42,16 @@ class ProjectController extends Controller
         $val_data['slug'] = $slug;
 
         // dd($val_data);
+
+
+        //gestione immagine
+
+        if ($request->hasFile('img')) {
+            $path = Storage::disk('public')->put('images_folder', $request->img);
+            // images_folder è il parametro che definisce il nome della cartella delle imgs
+
+            $val_data['img'] = $path;
+        }
 
         //funzione per creare il nuovo projetto e va a sostituire il newpost etc 
         $new_project = Project::create($val_data);
