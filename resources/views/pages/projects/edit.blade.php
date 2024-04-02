@@ -3,7 +3,7 @@
 @section('content')
     <main class="container">
 <h1>Modifica il progetto</h1>
-        <form action="{{ route('dashboardprojects.update', $project->slug) }}" method="POST">
+        <form action="{{ route('dashboardprojects.update', $project->slug) }}" method="POST"   enctype="multipart/form-data">
             @csrf
             @method('PUT')
 
@@ -19,8 +19,18 @@
             </div>
 
             <div class="mb-3">
-                <label for="img" class="form-label" >Image</label>
-                <input type="text" class="form-control" name="img" id="img" value="{{ old('image', $project->img)}}">
+                @if ($project->img)
+                    <img class="w-25" src="{{ asset('/storage/' . $project->img) }}" alt="">
+
+                    <input type="file"
+                    name="img"
+                    id="img"
+                    class="form-control"
+                    @error('img')
+                        is-invalid
+                    @enderror
+                    >
+                @endif
             </div>
 
             <div class="mb-3">
